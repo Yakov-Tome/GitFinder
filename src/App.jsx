@@ -14,10 +14,10 @@ function App() {
     <GithubProvider>
       <AlertProvider>
         <Router>
-          <div className="flex flex-col justify-between h-screen bg-neutral/10">
+          <div className="flex flex-col justify-between h-screen ">
             <Navbar title="GitFinder" />
 
-            <main className="container mx-auto px-3 pb-12">
+            <main className="container mx-auto px-3 pb-12 bg-neutral/10 rounded-2xl mb-10 pt-4">
               <Alert />
               <Routes>
                 <Route path="/" element={<Home />} />
