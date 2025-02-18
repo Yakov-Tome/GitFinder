@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import Spinner from "../components/layout/Spinner";
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from "react-icons/fa";
 import RepoList from "../components/repos/RepoList";
-import { getUser, getUserRepos } from "../context/github/GitActions";
+import { getUserAndRepos } from "../context/github/GitActions";
 
 function User() {
   const { user, loading, repos, dispatch } = useContext(GitContext);
@@ -14,11 +14,8 @@ function User() {
   useEffect(() => {
     dispatch({ type: "SET_LADING" });
     const getUserData = async () => {
-      const userData = await getUser(params.login);
-      dispatch({ type: "GET_USER", payload: userData });
-
-      const userRepoData = await getUserRepos(params.login);
-      dispatch({ type: "GET_REPOS", payload: userRepoData });
+      const userData = await getUserAndRepos(params.login);
+      dispatch({ type: "GET_USER_AND_REPOS", payload: userData });
     };
 
     getUserData();
